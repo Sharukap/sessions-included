@@ -23,7 +23,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use('/students', adminRouter);
 app.use(session({
   name: 'session-id',
   secret: '12345-67890-09876-54321',
@@ -52,7 +52,7 @@ var auth = (req, res, next) => {
 }
 app.use(auth);
 
-app.use('/students', adminRouter);
+
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
